@@ -118,7 +118,7 @@ public class Sampler extends GUIApplication {
 					
 				}
 			}); 
-			viewObjects.add(new Dog());
+			viewObjects.add(new Cookie());
 			
 		}
 		
