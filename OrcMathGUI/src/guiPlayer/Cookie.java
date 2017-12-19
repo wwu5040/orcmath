@@ -34,6 +34,6 @@ public class Cookie extends Component{
 	}
 	
 	public String toString() {
-		return name + "," + price + "," + flavor;
+		return name + "," + flavor + "," + price;
 	}
 }

@@ -57,7 +57,7 @@ public class CatalogMaker {
 		try{    
 			FileWriter fw=new FileWriter(fileName);    
 			for(Cookie c: list) {
-				fw.write(c + "/n");
+				fw.write(c + "\n");
 			}
 			fw.close();    
 			System.out.println("Success! File \""+fileName+"\" saved!");
