@@ -32,6 +32,7 @@ public class CatalogScreen extends FullFunctionScreen {
 		viewObjects.add(flavorField);
 		viewObjects.add(priceField);
 		viewObjects.add(add);
+		//
 		
 	}
 
