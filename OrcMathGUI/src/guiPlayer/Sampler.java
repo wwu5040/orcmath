@@ -125,7 +125,7 @@ public class Sampler extends GUIApplication implements FileRequester{
 					
 				}
 			}); 
-			viewObjects.add(cb);
+			//viewObjects.add(new Cookie());
 			
 			
 				

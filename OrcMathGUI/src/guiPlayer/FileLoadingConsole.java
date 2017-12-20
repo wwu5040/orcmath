@@ -9,79 +9,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CatalogMaker {
+public class FileLoadingConsole {
 
-	private ArrayList<Cookie> list;
-	
-	public CatalogMaker() {
-		list = new ArrayList<Cookie>();
-		list.add(new Cookie("Thin Mint", "Mint", 5));
-		list.add(new Cookie("Samoas", "Caramel", 4));
-		list.add(new Cookie("Tagalongs", "Peanut", 4));
-		list.add(new Cookie("Trefoils", "Sugar", 3));
-	}
-	
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		CatalogMaker instance = new CatalogMaker();
-		
-		
-		System.out.println("Type in 'stop' if you wish to stop, or input another cookie name.");
-		String name = in.nextLine();
-		
-		while(!name.equals("stop")) {
-			System.out.println("What flavor is it?.");
-			String flavor = in.nextLine();
-			System.out.println("How much does it cost?.");
-			String price = in.nextLine();
-			instance.addNewItem(name, flavor, Integer.parseInt(price));
-			System.out.println("Type in 'stop' if you wish to stop, or input another cookie name.");
-			name = in.nextLine();
-		}
-			
-		System.out.print(instance.getCSVContent());
-		instance.testSaveContent("test.csv");
-		instance.testFileLoading();
-	}
-	
-	public ArrayList<Cookie> getCatalog() {
-		return this.list;
-	}
-	
-	public String getCSVContent() {
-		String data = "Name,Flavor,Price\n";
-		for(Cookie c: list) {
-			data += c.toString() + "\n";
-		}
-		return data;
-	}
-	
-	public void addNewItem(String name, String flavor, int price) {
-		list.add(new Cookie(name, flavor, price));
-		System.out.println("Item added succesfully.");
+	public static void main(String[] args){
+
+		List<String> content = testFileLoading();
+		displayContent(content);
+		testSaveContent("test.csv");
 	}
 
-	private void testSaveContent(String fileName) {
+
+
+	private static void testSaveContent(String fileName) {
 		try{    
 			FileWriter fw=new FileWriter(fileName);    
-			for(Cookie c: list) {
-				fw.write(c + "\n");
-			}
+			fw.write("This file was created programmatically.");
 			fw.close();    
 			System.out.println("Success! File \""+fileName+"\" saved!");
 		}catch(IOException e){
 			System.out.println("An IOException was thrown. \nCheck to see that the directory where you tried to save the file actually exists.");
 		}
 	}
-	
+
 	private static void displayContent(List<String> content) {
 		//print the content:
 		for(String item : content){
 			System.out.println(item);
 		}
 	}
-	
-	private List<String> testFileLoading() {
+
+	private static List<String> testFileLoading() {
 		Scanner in = new Scanner(System.in);
 		String fileName = "";
 		List<String> content = new ArrayList<String>();
@@ -96,8 +53,7 @@ public class CatalogMaker {
 				//a BufferedReader enables us to read teh file one line at a time
 				BufferedReader br = new BufferedReader(fileReader);
 				while ((line = br.readLine()) != null) {
-					String[] param = line.split(",");
-					list.add(new Cookie("s","s",5));
+					content.add(line);
 
 					/*
 					 * useful later:
@@ -116,6 +72,14 @@ String[] row = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 		in.close();
 
 		return content;
+
 	}
+
+
+
+
+
 }
+
+
 
